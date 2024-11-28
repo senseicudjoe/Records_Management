@@ -125,16 +125,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="Enrollment.cpp" />
     <ClCompile Include="Faculty.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="paymentForm.cpp" />
+    <ClCompile Include="RegistrationForm.cpp" />
+    <ClCompile Include="StudentEnrollment.cpp" />
+    <ClCompile Include="studentGrades.cpp" />
+    <ClCompile Include="studentProfile.cpp" />
+    <ClCompile Include="studentTranscript.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="indexForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Course.h" />
     <ClInclude Include="db_connection.h" />
     <ClInclude Include="Enrollment.h" />
@@ -147,10 +157,49 @@
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="paymentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="RegistrationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentEnrollment.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentGrades.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentProfile.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentTranscript.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="indexForm.resx">
+      <DependentUpon>indexForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="paymentForm.resx">
+      <DependentUpon>paymentForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentEnrollment.resx">
+      <DependentUpon>StudentEnrollment.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentGrades.resx">
+      <DependentUpon>studentGrades.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentProfile.resx">
+      <DependentUpon>studentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentTranscript.resx">
+      <DependentUpon>studentTranscript.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
