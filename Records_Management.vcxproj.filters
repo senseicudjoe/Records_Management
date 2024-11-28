@@ -18,9 +18,51 @@
     <ClCompile Include="LoginForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RegistrationForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="indexForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="studentProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentEnrollment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="studentGrades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="studentTranscript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="paymentForm.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistrationForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="indexForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentProfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentEnrollment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentGrades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentTranscript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="paymentForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

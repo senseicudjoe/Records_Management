@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -120,16 +120,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="paymentForm.cpp" />
+    <ClCompile Include="RegistrationForm.cpp" />
+    <ClCompile Include="StudentEnrollment.cpp" />
+    <ClCompile Include="studentGrades.cpp" />
+    <ClCompile Include="studentProfile.cpp" />
+    <ClCompile Include="studentTranscript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="indexForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="paymentForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="RegistrationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentEnrollment.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentGrades.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentProfile.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="studentTranscript.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="indexForm.resx">
+      <DependentUpon>indexForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="paymentForm.resx">
+      <DependentUpon>paymentForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentEnrollment.resx">
+      <DependentUpon>StudentEnrollment.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentGrades.resx">
+      <DependentUpon>studentGrades.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentProfile.resx">
+      <DependentUpon>studentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentTranscript.resx">
+      <DependentUpon>studentTranscript.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
