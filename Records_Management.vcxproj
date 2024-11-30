@@ -120,7 +120,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="anyForm.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="paymentForm.cpp" />
