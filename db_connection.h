@@ -2,11 +2,9 @@
 
 // Description: This file contains the code to connect to the database and execute queries.
 
-#ifndef DB_CONNECTION_H
-#define DB_CONNECTION_H
-
 #include <iostream>
 #include <string>
+#include <msclr\marshal_cppstd.h>
 
 using namespace MySql::Data::MySqlClient;
 using namespace System::Data;
@@ -60,6 +58,5 @@ public:
 			System::Windows::Forms::MessageBox::Show(e->Message);
 			return nullptr;
 		}
-	};
+	}
 };
-#endif // !DB_CONNECTION_H

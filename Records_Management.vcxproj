@@ -125,6 +125,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="Enrollment.cpp" />
@@ -136,12 +137,10 @@
     <ClCompile Include="studentGrades.cpp" />
     <ClCompile Include="studentProfile.cpp" />
     <ClCompile Include="studentTranscript.cpp" />
-    <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Student.cpp" />
-    <ClCompile Include="test.cpp" />
-    <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
     <ClInclude Include="indexForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -149,9 +148,6 @@
     <ClInclude Include="db_connection.h" />
     <ClInclude Include="Enrollment.h" />
     <ClInclude Include="Faculty.h" />
-    <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Student.h" />
     <ClInclude Include="Users.h" />
     <ClInclude Include="LoginForm.h">
@@ -200,9 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="studentTranscript.resx">
       <DependentUpon>studentTranscript.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
