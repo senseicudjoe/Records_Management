@@ -39,6 +39,12 @@
     <ClCompile Include="paymentForm.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="studentSchedule1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="anyForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
@@ -63,6 +69,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="paymentForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="studentSchedule1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="anyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

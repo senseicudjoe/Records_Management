@@ -10,12 +10,12 @@ namespace RecordsManagement {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for StudentEnrollment
+	/// Summary for anyForm
 	/// </summary>
-	public ref class StudentEnrollment : public System::Windows::Forms::Form
+	public ref class anyForm : public System::Windows::Forms::Form
 	{
 	public:
-		StudentEnrollment(void)
+		anyForm(void)
 		{
 			InitializeComponent();
 			//
@@ -27,17 +27,24 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~StudentEnrollment()
+		~anyForm()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
-	protected:
 	private: System::Windows::Forms::CheckedListBox^ checkedListBox1;
+	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button1;
+	protected:
+
+	protected:
+
+
+	protected:
+
+
 
 	private:
 		/// <summary>
@@ -52,22 +59,10 @@ namespace RecordsManagement {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->checkedListBox1 = (gcnew System::Windows::Forms::CheckedListBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
-			// label1
-			// 
-			this->label1->AllowDrop = true;
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(234, 205);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(113, 42);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Enroll";
 			// 
 			// checkedListBox1
 			// 
@@ -78,33 +73,44 @@ namespace RecordsManagement {
 				L"CALCULUS (1.0 credits (2.0 credits)", L"INTERMEDIATE COMPUTING PROGRAMMING (3.0 credits)",
 					L"PRINCIPLES OF ECONOMICS (4.0 credits)"
 			});
-			this->checkedListBox1->Location = System::Drawing::Point(450, 205);
+			this->checkedListBox1->Location = System::Drawing::Point(401, 136);
 			this->checkedListBox1->Name = L"checkedListBox1";
 			this->checkedListBox1->Size = System::Drawing::Size(1086, 648);
-			this->checkedListBox1->TabIndex = 1;
+			this->checkedListBox1->TabIndex = 4;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(197, 136);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(113, 42);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Enroll";
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(811, 992);
+			this->button1->Location = System::Drawing::Point(806, 937);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(356, 64);
-			this->button1->TabIndex = 2;
+			this->button1->Size = System::Drawing::Size(247, 77);
+			this->button1->TabIndex = 6;
 			this->button1->Text = L"Submit";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
-			// StudentEnrollment
+			// anyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1828, 1166);
+			this->ClientSize = System::Drawing::Size(1673, 1123);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->checkedListBox1);
 			this->Controls->Add(this->label1);
-			this->Name = L"StudentEnrollment";
+			this->Controls->Add(this->checkedListBox1);
+			this->Name = L"anyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"StudentEnrollment";
+			this->Text = L"anyForm";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

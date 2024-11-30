@@ -10,12 +10,12 @@ namespace RecordsManagement {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for studentTranscript
+	/// Summary for studentSchedule
 	/// </summary>
-	public ref class studentTranscript : public System::Windows::Forms::Form
+	public ref class studentSchedule : public System::Windows::Forms::Form
 	{
 	public:
-		studentTranscript(void)
+		studentSchedule(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~studentTranscript()
+		~studentSchedule()
 		{
 			if (components)
 			{
@@ -36,7 +36,6 @@ namespace RecordsManagement {
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
-	private: System::Windows::Forms::Label^ label2;
 
 	private:
 		/// <summary>
@@ -52,44 +51,30 @@ namespace RecordsManagement {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(237, 71);
+			this->dataGridView1->Location = System::Drawing::Point(68, 51);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 82;
 			this->dataGridView1->RowTemplate->Height = 33;
-			this->dataGridView1->Size = System::Drawing::Size(1275, 979);
-			this->dataGridView1->TabIndex = 5;
+			this->dataGridView1->Size = System::Drawing::Size(1618, 967);
+			this->dataGridView1->TabIndex = 0;
 			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(37, 71);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(194, 42);
-			this->label2->TabIndex = 4;
-			this->label2->Text = L"Transcript:";
-			// 
-			// studentTranscript
+			// studentSchedule
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1590, 1141);
+			this->ClientSize = System::Drawing::Size(1754, 1071);
 			this->Controls->Add(this->dataGridView1);
-			this->Controls->Add(this->label2);
-			this->Name = L"studentTranscript";
+			this->Name = L"studentSchedule";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"studentTranscript";
+			this->Text = L"studentSchedule";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

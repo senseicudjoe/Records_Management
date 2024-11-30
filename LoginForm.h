@@ -1,5 +1,5 @@
 #pragma once
-
+#include "indexForm.h"
 namespace RecordsManagement {
 
 	using namespace System;
@@ -66,7 +66,7 @@ namespace RecordsManagement {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(528, 375);
+			this->label1->Location = System::Drawing::Point(173, 371);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(110, 42);
 			this->label1->TabIndex = 0;
@@ -77,7 +77,7 @@ namespace RecordsManagement {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(528, 523);
+			this->label2->Location = System::Drawing::Point(173, 519);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(183, 42);
 			this->label2->TabIndex = 1;
@@ -87,7 +87,7 @@ namespace RecordsManagement {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(776, 368);
+			this->textBox1->Location = System::Drawing::Point(421, 364);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(661, 49);
 			this->textBox1->TabIndex = 2;
@@ -96,7 +96,7 @@ namespace RecordsManagement {
 			// 
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(776, 516);
+			this->textBox2->Location = System::Drawing::Point(421, 512);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(661, 49);
 			this->textBox2->TabIndex = 3;
@@ -106,24 +106,29 @@ namespace RecordsManagement {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(535, 692);
+			this->button1->Location = System::Drawing::Point(180, 688);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(902, 80);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Login";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
 			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1957, 1105);
+			this->ClientSize = System::Drawing::Size(1274, 1229);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"LoginForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"LoginForm";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -131,5 +136,10 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	indexForm^ index = gcnew indexForm();
+	this->Hide();
+	index->ShowDialog();
+}
 };
 }

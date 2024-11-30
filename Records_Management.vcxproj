@@ -120,6 +120,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="anyForm.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="paymentForm.cpp" />
@@ -127,9 +128,13 @@
     <ClCompile Include="StudentEnrollment.cpp" />
     <ClCompile Include="studentGrades.cpp" />
     <ClCompile Include="studentProfile.cpp" />
+    <ClCompile Include="studentSchedule1.cpp" />
     <ClCompile Include="studentTranscript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="anyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="indexForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -151,11 +156,17 @@
     <ClInclude Include="studentProfile.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="studentSchedule1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="studentTranscript.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="anyForm.resx">
+      <DependentUpon>anyForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="indexForm.resx">
       <DependentUpon>indexForm.h</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="studentProfile.resx">
       <DependentUpon>studentProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="studentSchedule1.resx">
+      <DependentUpon>studentSchedule1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="studentTranscript.resx">
       <DependentUpon>studentTranscript.h</DependentUpon>

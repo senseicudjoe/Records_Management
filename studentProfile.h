@@ -185,6 +185,7 @@ namespace RecordsManagement {
 			// 
 			// pictureBox1
 			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->pictureBox1->Location = System::Drawing::Point(1361, 99);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(321, 294);
@@ -193,6 +194,8 @@ namespace RecordsManagement {
 			// 
 			// button1
 			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(1361, 436);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(321, 55);
@@ -236,7 +239,7 @@ namespace RecordsManagement {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1723, 1158);
+			this->ClientSize = System::Drawing::Size(1774, 1060);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textBox1);
@@ -251,7 +254,11 @@ namespace RecordsManagement {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"studentProfile";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Profile";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
