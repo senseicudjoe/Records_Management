@@ -1,5 +1,7 @@
 #pragma once
 #include "indexForm.h"
+#include "db_connection.h"
+
 namespace RecordsManagement {
 
 	using namespace System;
@@ -136,10 +138,38 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	indexForm^ index = gcnew indexForm();
-	this->Hide();
-	index->ShowDialog();
-}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		indexForm^ index = gcnew indexForm();
+		db^ con = gcnew db();
+
+		// take the email and password from the textboxes
+		String^ email = textBox1->Text;
+		String^ password = textBox2->Text;
+
+		// find the email in the Users table and get the respective role and password
+		con->openConnection();
+
+		String^ query = "SELECT * FROM users WHERE email = '" + email + "'";
+
+		con->executeQuery(query);
+
+		if (con->dr->Read()) {
+			String^ role = con->dr->GetString(5);
+			String^ pass = con->dr->GetString(4);
+			if (pass == password) {
+				MessageBox::Show("Login Successful");
+				this->Hide();
+				index->ShowDialog();
+			}
+			else {
+				MessageBox::Show("Incorrect Password");
+			}
+
+			con->closeConnection();
+		}
+		else {
+			MessageBox::Show("User not found");
+		}
+	}
 };
 }

@@ -179,8 +179,8 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 	private: System::Void enrolmentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		anyForm^ enroll = gcnew anyForm();
-		enroll->Size = System::Drawing::Size(900, 600);
+		StudentEnrollment^ enroll = gcnew StudentEnrollment();
+		enroll->Size = System::Drawing::Size(650, 450);
 	/*	enroll->MdiParent = this;*/
 		enroll->ShowDialog();
 	}
@@ -188,7 +188,7 @@ private: System::Void gradesToolStripMenuItem1_Click(System::Object^ sender, Sys
 }
 private: System::Void profileToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	studentProfile^ profile = gcnew studentProfile();
-	profile->Size = System::Drawing::Size(1000, 500);
+	profile->Size = System::Drawing::Size(1000, 600);
 	profile->ShowDialog();
 }
 private: System::Void transcriptsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {

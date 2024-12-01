@@ -1,5 +1,7 @@
 #pragma once
 
+#include "db_connection.h"
+
 namespace RecordsManagement {
 
 	using namespace System;
@@ -18,6 +20,7 @@ namespace RecordsManagement {
 		studentSchedule(void)
 		{
 			InitializeComponent();
+			loadClassSchedule("1", "SEM1");
 			//
 			//TODO: Add the constructor code here
 			//
@@ -57,19 +60,22 @@ namespace RecordsManagement {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(68, 51);
+			this->dataGridView1->Location = System::Drawing::Point(45, 33);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 82;
 			this->dataGridView1->RowTemplate->Height = 33;
-			this->dataGridView1->Size = System::Drawing::Size(1618, 967);
+			this->dataGridView1->Size = System::Drawing::Size(1079, 619);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &studentSchedule::dataGridView1_CellContentClick);
 			// 
 			// studentSchedule
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1754, 1071);
+			this->ClientSize = System::Drawing::Size(1169, 675);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"studentSchedule";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"studentSchedule";
@@ -78,5 +84,45 @@ namespace RecordsManagement {
 
 		}
 #pragma endregion
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+
+	private: void loadClassSchedule(String^ student_id, String^ current_semester) {
+		db^ con = gcnew db();
+
+		con->openConnection();
+		String^ query = "SELECT " +
+			"cs.schedule_id, " +
+			"c.course_name, " +
+			"CONCAT(u.first_name, ' ', u.last_name) AS faculty_name, " +
+			"cs.day, " +
+			"TIME_FORMAT(cs.start_time, '%h:%i %p') AS start_time, " +
+			"TIME_FORMAT(cs.end_time, '%h:%i %p') AS end_time, " +
+			"cs.room_number " +
+			"FROM " +
+			"ClassSchedule cs " +
+			"JOIN " +
+			"Courses c ON cs.course_id = c.course_id "
+			"JOIN " +
+			"Faculty f ON cs.faculty_id = f.faculty_id " +
+			"JOIN " +
+			"Users u ON f.user_id = u.user_id " +
+			"JOIN " +
+			"Enrollment e ON e.course_id = cs.course_id " +
+			"WHERE " +
+			"e.student_id = " + student_id + " " +
+			"AND cs.semester = " + "'" + current_semester + "'" + " " +
+			"ORDER BY "
+			"FIELD(cs.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'), " +
+			"cs.start_time ASC;";
+		DataTable^ dt = con->fillDataTable(query);
+		if (dt != nullptr) {
+			dataGridView1->DataSource = dt;
+		}
+		else {
+			MessageBox::Show("Error loading data");
+		}
+	}
+
 	};
 }
