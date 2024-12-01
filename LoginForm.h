@@ -1,5 +1,7 @@
 #pragma once
 #include "indexForm.h"
+#include "FacultyIndexForm.h"
+#include "AdminIndexForm.h"
 #include "db_connection.h"
 
 namespace RecordsManagement {

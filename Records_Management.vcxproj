@@ -123,6 +123,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdminFinancials.cpp" />
+    <ClCompile Include="AdminIndexForm.cpp" />
+    <ClCompile Include="AdminManageCourses.cpp" />
+    <ClCompile Include="AdminManageFaculty.cpp" />
+    <ClCompile Include="AdminManageStudents.cpp" />
+    <ClCompile Include="FacultyClassRoster.cpp" />
+    <ClCompile Include="FacultyGradesh.cpp" />
+    <ClCompile Include="FacultyIndexForm.cpp" />
+    <ClCompile Include="FacultyManageCourses.cpp" />
+    <ClCompile Include="FacultyProfile.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="paymentForm.cpp" />
@@ -134,7 +144,37 @@
     <ClCompile Include="studentTranscript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminFinancials.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminIndexForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminManageCourses.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminManageFaculty.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminManageStudents.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="anyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FacultyClassRoster.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FacultyGradesh.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FacultyIndexForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FacultyManageCourses.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FacultyProfile.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="db_connection.h" />
@@ -167,8 +207,38 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminFinancials.resx">
+      <DependentUpon>AdminFinancials.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminIndexForm.resx">
+      <DependentUpon>AdminIndexForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManageCourses.resx">
+      <DependentUpon>AdminManageCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManageFaculty.resx">
+      <DependentUpon>AdminManageFaculty.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManageStudents.resx">
+      <DependentUpon>AdminManageStudents.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="anyForm.resx">
       <DependentUpon>anyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyClassRoster.resx">
+      <DependentUpon>FacultyClassRoster.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyGradesh.resx">
+      <DependentUpon>FacultyGradesh.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyIndexForm.resx">
+      <DependentUpon>FacultyIndexForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyManageCourses.resx">
+      <DependentUpon>FacultyManageCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyProfile.resx">
+      <DependentUpon>FacultyProfile.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="indexForm.resx">
       <DependentUpon>indexForm.h</DependentUpon>

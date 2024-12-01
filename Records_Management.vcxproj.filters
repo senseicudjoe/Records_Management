@@ -42,7 +42,34 @@
     <ClCompile Include="studentSchedule1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="anyForm.cpp">
+    <ClCompile Include="FacultyIndexForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FacultyProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FacultyManageCourses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FacultyClassRoster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FacultyGradesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminIndexForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminManageStudents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminManageFaculty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminManageCourses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdminFinancials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +102,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="anyForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FacultyIndexForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FacultyProfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FacultyManageCourses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FacultyClassRoster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FacultyGradesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminIndexForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminManageStudents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminManageFaculty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminManageCourses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdminFinancials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
