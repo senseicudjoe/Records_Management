@@ -1,5 +1,7 @@
 #pragma once
 #include "indexForm.h"
+#include "FacultyIndexForm.h"
+#include "AdminIndexForm.h"
 namespace RecordsManagement {
 
 	using namespace System;
@@ -137,7 +139,7 @@ namespace RecordsManagement {
 #pragma endregion
 
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	indexForm^ index = gcnew indexForm();
+	AdminIndexForm^ index = gcnew AdminIndexForm();
 	this->Hide();
 	index->ShowDialog();
 }
