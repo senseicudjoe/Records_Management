@@ -331,7 +331,7 @@ namespace RecordsManagement {
 		OpenFileDialog^ dialog = gcnew OpenFileDialog();
 		dialog->Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
 		if (dialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			pictureBox1->ImageLocation = dialog->FileName;
+			pictureBox1->ImageLocation =EscapeBackslashes(dialog->FileName);
 		}
 
 		// save the image to the database
@@ -388,6 +388,12 @@ namespace RecordsManagement {
 		   }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
+private: String^ EscapeBackslashes(String^ input) {
+	// Replace single backslashes with double backslashes
+	return input->Replace("\\", "\\\\");
+}
+
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	// redirect to update password form
 	updatePassword^ update = gcnew updatePassword();
