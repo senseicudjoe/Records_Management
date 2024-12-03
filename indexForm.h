@@ -6,6 +6,7 @@
 #include "studentTranscript.h"
 #include "paymentForm.h"
 #include "anyForm.h"
+#include "GlobalVariable.h"
 
 
 namespace RecordsManagement {

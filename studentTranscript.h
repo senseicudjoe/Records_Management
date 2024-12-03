@@ -1,6 +1,7 @@
 #pragma once
 
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -20,7 +21,7 @@ namespace RecordsManagement {
 		studentTranscript(void)
 		{
 			InitializeComponent();
-			loadTranscript("1");
+			loadTranscript(GlobalVariables::currentUser->getStudentID());
 			//
 			//TODO: Add the constructor code here
 			//
@@ -108,14 +109,12 @@ namespace RecordsManagement {
 			con->openConnection();
 
 			String^ query = "SELECT " +
-				"t.transcript_id," +
 				"s.student_id," +
 				"CONCAT(u.first_name, ' ', u.last_name) AS student_name," +
 				"c.course_name," +
 				"c.credits," +
 				"t.semester," +
-				"t.final_grade AS grade_value," +
-				"t.date_issued " +
+				"t.final_grade AS grade_value" +
 				"FROM " +
 				"Transcripts t " +
 				"JOIN " +

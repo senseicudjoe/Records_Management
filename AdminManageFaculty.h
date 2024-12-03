@@ -1,5 +1,9 @@
 #pragma once
 
+#include "db_connection.h"
+#include "addFaculty.h"
+#include "editFaculty.h"
+
 namespace RecordsManagement {
 
 	using namespace System;
@@ -18,6 +22,7 @@ namespace RecordsManagement {
 		AdminManageFaculty(void)
 		{
 			InitializeComponent();
+			loadFaculty();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -45,7 +50,7 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -66,77 +71,154 @@ namespace RecordsManagement {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(1143, 992);
+			this->button3->Location = System::Drawing::Point(758, 625);
+			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(164, 61);
+			this->button3->Size = System::Drawing::Size(109, 39);
 			this->button3->TabIndex = 9;
 			this->button3->Text = L"Delete";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &AdminManageFaculty::button3_Click);
 			// 
 			// button2
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(759, 992);
+			this->button2->Location = System::Drawing::Point(507, 625);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(164, 61);
+			this->button2->Size = System::Drawing::Size(109, 39);
 			this->button2->TabIndex = 8;
-			this->button2->Text = L"Add";
+			this->button2->Text = L"Edit";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &AdminManageFaculty::button2_Click);
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(386, 992);
+			this->button1->Location = System::Drawing::Point(258, 625);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(164, 61);
+			this->button1->Size = System::Drawing::Size(109, 39);
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"New";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AdminManageFaculty::button1_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(703, 31);
+			this->label1->Location = System::Drawing::Point(469, 20);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(159, 42);
+			this->label1->Size = System::Drawing::Size(101, 29);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Faculty: ";
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(26, 88);
+			this->dataGridView1->Location = System::Drawing::Point(17, 56);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 82;
 			this->dataGridView1->RowTemplate->Height = 33;
-			this->dataGridView1->Size = System::Drawing::Size(1608, 819);
+			this->dataGridView1->Size = System::Drawing::Size(1072, 524);
 			this->dataGridView1->TabIndex = 5;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AdminManageFaculty::dataGridView1_CellContentClick);
 			// 
 			// AdminManageFaculty
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1661, 1090);
+			this->ClientSize = System::Drawing::Size(1107, 675);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"AdminManageFaculty";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminManageFaculty";
+			this->Load += gcnew System::EventHandler(this, &AdminManageFaculty::AdminManageFaculty_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Open addFaculty form
+		addFaculty^ form = gcnew addFaculty();
+		form->ShowDialog();
+
+		// Refresh the data grid view
+		loadFaculty();
+	}
+
+	private: void loadFaculty() {
+		// Load the data grid view with the faculty data
+		db^ connect = gcnew db();
+		connect->openConnection();
+
+		String^ query = "SELECT "
+			"u.user_id, "
+			"CONCAT(u.first_name, ' ', u.last_name) AS fullName, "
+			"u.email, "
+			"f.department, "
+			"f.date_of_appointment "
+			"FROM users u "
+			"JOIN faculty f ON u.user_id = f.user_id";
+
+		DataTable^ dt = connect->fillDataTable(query);
+		dataGridView1->DataSource = dt;
+
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Get the faculty_id of the selected faculty
+		String^ faculty_id = dataGridView1->Rows[dataGridView1->CurrentCell->RowIndex]->Cells[0]->Value->ToString();
+		
+		// Open editFaculty form
+		editFaculty^ form = gcnew editFaculty(faculty_id);
+		form->ShowDialog();
+		// Refresh the data grid view
+		loadFaculty();
+	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	// open the delete confirmation dialog
+	int selectedRow = dataGridView1->CurrentRow->Index;
+	DataGridViewRow^ row = dataGridView1->Rows[selectedRow];
+	String^ user_id = row->Cells["user_id"]->Value->ToString();
+	String^ fullName = row->Cells["fullName"]->Value->ToString();
+
+	String^ message = "Are you sure you want to delete " + fullName + "?";
+	String^ title = "Delete Faculty User";
+	MessageBoxButtons buttons = MessageBoxButtons::YesNo;
+	System::Windows::Forms::DialogResult result = MessageBox::Show(message, title, buttons);
+
+	if (result == System::Windows::Forms::DialogResult::Yes) {
+		// delete the course
+		db^ database = gcnew db();
+		database->openConnection();
+		String^ query = "DELETE FROM users WHERE user_id = " + user_id;
+		database->executeQuery(query);
+		database->closeConnection();
+	}
+
+	// Refresh the data grid view
+	loadFaculty();
 }
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void AdminManageFaculty_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+};
+}
+

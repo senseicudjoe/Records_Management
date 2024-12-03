@@ -123,16 +123,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="addCourses.cpp" />
+    <ClCompile Include="addFaculty.cpp" />
     <ClCompile Include="AdminFinancials.cpp" />
     <ClCompile Include="AdminIndexForm.cpp" />
     <ClCompile Include="AdminManageCourses.cpp" />
     <ClCompile Include="AdminManageFaculty.cpp" />
     <ClCompile Include="AdminManageStudents.cpp" />
+    <ClCompile Include="editCourse.cpp" />
+    <ClCompile Include="editFaculty.cpp" />
+    <ClCompile Include="editStudents.cpp" />
     <ClCompile Include="FacultyClassRoster.cpp" />
     <ClCompile Include="FacultyGradesh.cpp" />
     <ClCompile Include="FacultyIndexForm.cpp" />
     <ClCompile Include="FacultyManageCourses.cpp" />
     <ClCompile Include="FacultyProfile.cpp" />
+    <ClCompile Include="forgotPassword.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="paymentForm.cpp" />
@@ -142,8 +148,15 @@
     <ClCompile Include="studentProfile.cpp" />
     <ClCompile Include="studentSchedule1.cpp" />
     <ClCompile Include="studentTranscript.cpp" />
+    <ClCompile Include="updatePassword.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addCourses.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="addFaculty.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AdminFinancials.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -162,6 +175,15 @@
     <ClInclude Include="anyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="editCourse.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="editFaculty.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="editStudents.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FacultyClassRoster.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -178,6 +200,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="db_connection.h" />
+    <ClInclude Include="forgotPassword.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="GlobalVariable.h" />
     <ClInclude Include="indexForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -205,8 +231,17 @@
     <ClInclude Include="studentTranscript.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="updatePassword.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="addCourses.resx">
+      <DependentUpon>addCourses.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addFaculty.resx">
+      <DependentUpon>addFaculty.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminFinancials.resx">
       <DependentUpon>AdminFinancials.h</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +260,15 @@
     <EmbeddedResource Include="anyForm.resx">
       <DependentUpon>anyForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editCourse.resx">
+      <DependentUpon>editCourse.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editFaculty.resx">
+      <DependentUpon>editFaculty.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editStudents.resx">
+      <DependentUpon>editStudents.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacultyClassRoster.resx">
       <DependentUpon>FacultyClassRoster.h</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacultyProfile.resx">
       <DependentUpon>FacultyProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forgotPassword.resx">
+      <DependentUpon>forgotPassword.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="indexForm.resx">
       <DependentUpon>indexForm.h</DependentUpon>
@@ -266,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="studentTranscript.resx">
       <DependentUpon>studentTranscript.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updatePassword.resx">
+      <DependentUpon>updatePassword.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

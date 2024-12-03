@@ -1,0 +1,13 @@
+Transcript for: Alice Johnson
+Email: alice.j@example.com
+Major: Business Administration
+Year Group: 2024
+-------------------------------------------------
+Course Name | Semester | Final Grade
+-------------------------------------------------
+Data Structures | SEM1 | B
+Operations Research | SEM1 | C
+Machine Learning | SEM1 | B
+Database Systems | SEM2 | A
+Software Engineering | SEM2 | A
+Engineering Mechanics | SEM2 | B

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -20,7 +21,6 @@ namespace RecordsManagement {
 		StudentEnrollment(void)
 		{
 			InitializeComponent();
-			FillYear();
 			FillSemester();
 			//
 			//TODO: Add the constructor code here
@@ -65,8 +65,8 @@ namespace RecordsManagement {
 
 
 	private: System::Windows::Forms::DataGridView^ courses;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Label^ YearGroup;
+
+
 	private: System::Windows::Forms::Button^ button1;
 
 
@@ -92,8 +92,6 @@ namespace RecordsManagement {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->Semester = (gcnew System::Windows::Forms::ComboBox());
 			this->courses = (gcnew System::Windows::Forms::DataGridView());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->YearGroup = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->courses))->BeginInit();
 			this->SuspendLayout();
@@ -116,7 +114,7 @@ namespace RecordsManagement {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-			this->label1->Location = System::Drawing::Point(35, 44);
+			this->label1->Location = System::Drawing::Point(196, 29);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(122, 29);
 			this->label1->TabIndex = 4;
@@ -127,7 +125,7 @@ namespace RecordsManagement {
 			this->Semester->AccessibleName = L"semester";
 			this->Semester->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 			this->Semester->FormattingEnabled = true;
-			this->Semester->Location = System::Drawing::Point(177, 44);
+			this->Semester->Location = System::Drawing::Point(338, 29);
 			this->Semester->Name = L"Semester";
 			this->Semester->Size = System::Drawing::Size(121, 37);
 			this->Semester->TabIndex = 5;
@@ -148,31 +146,10 @@ namespace RecordsManagement {
 			this->courses->TabIndex = 8;
 			this->courses->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &StudentEnrollment::courses_CellContentClick);
 			// 
-			// comboBox1
-			// 
-			this->comboBox1->AccessibleName = L"YearGroup";
-			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(469, 44);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 37);
-			this->comboBox1->TabIndex = 10;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &StudentEnrollment::comboBox1_SelectedIndexChanged_1);
-			// 
-			// YearGroup
-			// 
-			this->YearGroup->AutoSize = true;
-			this->YearGroup->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-			this->YearGroup->Location = System::Drawing::Point(327, 44);
-			this->YearGroup->Name = L"YearGroup";
-			this->YearGroup->Size = System::Drawing::Size(141, 29);
-			this->YearGroup->TabIndex = 9;
-			this->YearGroup->Text = L"Year Group";
-			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
-			this->button1->Location = System::Drawing::Point(666, 47);
+			this->button1->Location = System::Drawing::Point(484, 29);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(95, 36);
 			this->button1->TabIndex = 11;
@@ -186,8 +163,6 @@ namespace RecordsManagement {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(835, 569);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->YearGroup);
 			this->Controls->Add(this->courses);
 			this->Controls->Add(this->Semester);
 			this->Controls->Add(this->label1);
@@ -197,6 +172,7 @@ namespace RecordsManagement {
 			this->Name = L"StudentEnrollment";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"StudentEnrollment";
+			this->Load += gcnew System::EventHandler(this, &StudentEnrollment::StudentEnrollment_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->courses))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -210,7 +186,7 @@ private: System::Void courses_CellContentClick(System::Object^ sender, System::W
 	
 }
 private: System::Void EnrollCourse_Click(System::Object^ sender, System::EventArgs^ e) {
-	// take the selected courses from the datagridview
+	// Validate selected courses
 	int count = 0;
 	for (int i = 0; i < courses->Rows->Count; i++) {
 		if (courses->Rows[i]->Cells[0]->Value != nullptr) {
@@ -219,90 +195,119 @@ private: System::Void EnrollCourse_Click(System::Object^ sender, System::EventAr
 	}
 
 	if (count == 0) {
-		MessageBox::Show("Please select a course to enroll");
+		MessageBox::Show("Please select a course to enroll.");
 		return;
 	}
 
-	// get the student id
-	String^ student_id = "1";
+	String^ student_id = GlobalVariables::currentUser->getStudentID();
 	String^ semester = Semester->Text;
-	String^ year_group = comboBox1->Text;
 
-	// check if the selected course credits add up to 5 or 4.5
+	if (String::IsNullOrWhiteSpace(semester)) {
+		MessageBox::Show("Please select a valid semester.");
+		return;
+	}
+
+	db^ con = gcnew db();
+
+	// Validate course credits
 	float credits = 0;
 	for (int i = 0; i < courses->Rows->Count; i++) {
 		if (courses->Rows[i]->Cells[0]->Value != nullptr) {
 			String^ course_id = courses->Rows[i]->Cells[0]->Value->ToString();
-			db^ con = gcnew db();
 			con->openConnection();
 			String^ query = "SELECT credits FROM courses WHERE course_id = '" + course_id + "'";
 			DataTable^ dt = con->fillDataTable(query);
 			con->closeConnection();
 
-			// convert to float
-			credits += Convert::ToSingle(dt->Rows[0]->ItemArray[0]->ToString());
+			if (dt->Rows->Count > 0 && dt->Rows[0]->ItemArray[0] != nullptr) {
+				credits += Convert::ToSingle(dt->Rows[0]->ItemArray[0]->ToString());
+			}
+			else {
+				MessageBox::Show("Invalid credit value for course: " + course_id);
+				return;
+			}
 		}
 	}
 
-	// check if credits add up to 5 or 4.5
-	if (credits != 5.0 || credits != 4.5) {
-		MessageBox::Show("Please select courses that add up to 5 or 4.5 credits");
+	// Check enrolled credits
+	con->openConnection();
+	String^ query = "SELECT SUM(credits) FROM courses WHERE course_id IN (SELECT course_id FROM Enrollment WHERE student_id = '" + student_id + "') AND semester = '" + semester + "'";
+	DataTable^ dt = con->fillDataTable(query);
+	con->closeConnection();
+
+	float enrolled_credits = 0;
+	if (dt->Rows->Count > 0 && dt->Rows[0]->ItemArray[0] != nullptr && dt->Rows[0]->ItemArray[0]->ToString() != "") {
+		enrolled_credits = Convert::ToSingle(dt->Rows[0]->ItemArray[0]->ToString());
+	}
+
+	if (enrolled_credits + credits > 3.0) {
+		MessageBox::Show("You cannot enroll in more than 3 credits.");
 		return;
 	}
 
-	// get the selected courses
+	if (credits <= 2.0) {
+		MessageBox::Show("Please select courses that add up to 2.0 or more credits.");
+		return;
+	}
+
+	// Enroll courses
 	for (int i = 0; i < courses->Rows->Count; i++) {
 		if (courses->Rows[i]->Cells[0]->Value != nullptr) {
 			String^ course_id = courses->Rows[i]->Cells[0]->Value->ToString();
-			db^ con = gcnew db();
 			con->openConnection();
-
-			// loop through the selected courses and insert them into the enrollment table
-			String^ query = "INSERT INTO Enrollment(student_id, course_id, semester) VALUES('" + student_id + "', '" + course_id + "', '" + semester + "')";
+			query = "INSERT INTO Enrollment(student_id, course_id, semester) VALUES('" + student_id + "', '" + course_id + "', '" + semester + "')";
 			con->executeQuery(query);
 			con->closeConnection();
 		}
 	}
+
+	MessageBox::Show("Enrollment successful!");
+
+	// Refresh the courses
+	filterTable(semester);
 }
+
 private: System::Void comboBox1_SelectedIndexChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	// get the year and semester
 	String^ semester = Semester->Text;
-	String^ year_group = comboBox1->Text;
 
 	// check if the year and semester are selected
-	if (semester == "" || year_group == "") {
-		MessageBox::Show("Please select the semester and year group");
+	if (semester == "") {
+		MessageBox::Show("Please select the semester.");
 		return;
 	}
 
-	// get the selected course from the database
-	db^ con = gcnew db();
-	con->openConnection();
-	String^ query = "SELECT * FROM courses WHERE semester = '" + semester + "' AND year_group = '" + year_group + "'";
-	DataTable^ dt = con->fillDataTable(query);
-	con->closeConnection();
-	courses->DataSource = dt;
+	filterTable(semester);
 }
 
-	private: void FillYear(void) {
-		db^ con = gcnew db();
-		con->openConnection();
+	   private: void filterTable(String^ semester) {
+		   db^ con = gcnew db();
+		   // get the courses the student is already enrolled in (Enrollment Table)
+		   con->openConnection();
+		   String^ query = "SELECT course_id FROM Enrollment WHERE student_id = '" + GlobalVariables::currentUser->getStudentID() + "'";
+		   DataTable^ dt = con->fillDataTable(query);
+		   con->closeConnection();
 
-		// get the year group
-		String^ query = "SELECT DISTINCT(year_group) FROM courses";
+		   // get the courses the student is not enrolled in
+		   con->openConnection();
+		   query = "SELECT `course_id` ,`course_name`, `credits`, `semester`, `description` FROM courses WHERE semester = '" + semester + "'";
+		   DataTable^ dt2 = con->fillDataTable(query);
+		   con->closeConnection();
 
-		DataTable^ dt = con->fillDataTable(query);
+		   // remove the courses the student is already enrolled in
+		   for (int i = 0; i < dt->Rows->Count; i++) {
+			   for (int j = 0; j < dt2->Rows->Count; j++) {
+				   if (dt->Rows[i]->ItemArray[0]->ToString() == dt2->Rows[j]->ItemArray[0]->ToString()) {
+					   dt2->Rows->RemoveAt(j);
+				   }
+			   }
+		   }
 
-		for (int i = 0; i < dt->Rows->Count; i++) {
-			String^ year = dt->Rows[i]->ItemArray[0]->ToString();
-			comboBox1->Items->Add(year);
-		}
-
-		con->closeConnection();
-	}
-
+		   courses->DataSource = dt2;
+	 }
+	
 	private: void FillSemester(void) {
 		// get the semester
 		db^ con = gcnew db();
@@ -318,5 +323,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		con->closeConnection();
 	}
+private: System::Void StudentEnrollment_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

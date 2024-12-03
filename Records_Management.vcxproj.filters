@@ -72,6 +72,27 @@
     <ClCompile Include="AdminFinancials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="updatePassword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="addCourses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editCourse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="addFaculty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editFaculty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editStudents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="forgotPassword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
@@ -132,6 +153,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AdminFinancials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="db_connection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="updatePassword.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="addCourses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editCourse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="addFaculty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editFaculty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editStudents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="forgotPassword.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

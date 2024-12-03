@@ -1,6 +1,7 @@
 #pragma once
 
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -109,6 +110,7 @@ namespace RecordsManagement {
 			this->dataGridView1->RowTemplate->Height = 33;
 			this->dataGridView1->Size = System::Drawing::Size(549, 403);
 			this->dataGridView1->TabIndex = 3;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &studentGrades::dataGridView1_CellContentClick);
 			// 
 			// studentGrades
 			// 
@@ -133,7 +135,7 @@ namespace RecordsManagement {
 	private: System::Void studentGrades_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ studentID = "1"; // get the student's ID from the login form
+	String^ studentID = GlobalVariables::currentUser->getStudentID(); // get the student's ID from the login form
 	
 	// get the selected semester
 	String^ semester = comboBox1->Text;
@@ -168,6 +170,8 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, Sys
 	DataTable^ dt = con->fillDataTable(query);
 	dataGridView1->DataSource = dt;
 	con->closeConnection();
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 };
 }

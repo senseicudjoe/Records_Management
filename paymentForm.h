@@ -1,5 +1,7 @@
 #pragma once
 #include "db_connection.h"
+#include "GlobalVariable.h"
+
 namespace RecordsManagement {
 
 	using namespace System;
@@ -233,7 +235,7 @@ private: System::Void btnFileUpload_Click(System::Object^ sender, System::EventA
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	// make student_id global
-	String^ student_id = "1";
+	String^ student_id = GlobalVariables::currentUser->getStudentID();
 
 	// get the semester
 	String^ semester = comboBox1->Text;

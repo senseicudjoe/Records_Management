@@ -57,11 +57,13 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
 
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
+
+
+
 	private: System::Windows::Forms::Button^ UploadPicture;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Label^ label5;
 
 
 
@@ -97,11 +99,9 @@ namespace RecordsManagement {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->UploadPicture = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->btnPicture))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -118,6 +118,10 @@ namespace RecordsManagement {
 			// 
 			this->txtDepartment->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
 			this->txtDepartment->FormattingEnabled = true;
+			this->txtDepartment->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Computer Science", L"Business Administration",
+					L"Engineering"
+			});
 			this->txtDepartment->Location = System::Drawing::Point(267, 286);
 			this->txtDepartment->Margin = System::Windows::Forms::Padding(2);
 			this->txtDepartment->Name = L"txtDepartment";
@@ -158,12 +162,12 @@ namespace RecordsManagement {
 			// btnSave
 			// 
 			this->btnSave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->btnSave->Location = System::Drawing::Point(447, 497);
+			this->btnSave->Location = System::Drawing::Point(498, 443);
 			this->btnSave->Margin = System::Windows::Forms::Padding(2);
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Size = System::Drawing::Size(371, 48);
 			this->btnSave->TabIndex = 26;
-			this->btnSave->Text = L"Register";
+			this->btnSave->Text = L"Add Student";
 			this->btnSave->UseVisualStyleBackColor = true;
 			this->btnSave->Click += gcnew System::EventHandler(this, &RegistrationForm::btnSave_Click);
 			// 
@@ -247,49 +251,6 @@ namespace RecordsManagement {
 			this->label9->Text = L"Profile Picture:";
 			this->label9->Click += gcnew System::EventHandler(this, &RegistrationForm::label9_Click);
 			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->label5->Location = System::Drawing::Point(21, 346);
-			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(98, 25);
-			this->label5->TabIndex = 38;
-			this->label5->Text = L"Password";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->label6->Location = System::Drawing::Point(19, 403);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(171, 25);
-			this->label6->TabIndex = 40;
-			this->label6->Text = L"Confirm Password";
-			this->label6->Click += gcnew System::EventHandler(this, &RegistrationForm::label6_Click);
-			// 
-			// textBox4
-			// 
-			this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->textBox4->Location = System::Drawing::Point(267, 346);
-			this->textBox4->Margin = System::Windows::Forms::Padding(2);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(453, 30);
-			this->textBox4->TabIndex = 42;
-			this->textBox4->UseSystemPasswordChar = true;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
-			this->textBox2->Location = System::Drawing::Point(267, 403);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(453, 30);
-			this->textBox2->TabIndex = 43;
-			this->textBox2->UseSystemPasswordChar = true;
-			// 
 			// UploadPicture
 			// 
 			this->UploadPicture->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
@@ -301,16 +262,35 @@ namespace RecordsManagement {
 			this->UploadPicture->UseVisualStyleBackColor = true;
 			this->UploadPicture->Click += gcnew System::EventHandler(this, &RegistrationForm::UploadPicture_Click);
 			// 
+			// textBox2
+			// 
+			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->textBox2->Location = System::Drawing::Point(267, 358);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(453, 25);
+			this->textBox2->TabIndex = 46;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->label5->Location = System::Drawing::Point(21, 354);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(123, 25);
+			this->label5->TabIndex = 45;
+			this->label5->Text = L"Year Group: ";
+			// 
 			// RegistrationForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1183, 675);
-			this->Controls->Add(this->UploadPicture);
+			this->ClientSize = System::Drawing::Size(1183, 513);
 			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
+			this->Controls->Add(this->UploadPicture);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label8);
@@ -347,10 +327,13 @@ private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e
 	String^ firstName = txtFName->Text;
 	String^ lastName = txtLName->Text;
 	String^ email = textBox1->Text;
-	String^ dob = dtpDOB->Text;
+	DateTime dob = dtpDOB->Value; // Get DateTime value
+	String^ dobFormatted = dob.ToString("yyyy-MM-dd");
+
+	MessageBox::Show(dobFormatted); // Debugging: Display the formatted date
+
 	String^ major = txtDepartment->Text;
-	String^ password = textBox4->Text;
-	String^ confirmPassword = textBox2->Text;
+	String^ year_group = textBox2->Text;
 	String^ picture = btnPicture->ImageLocation;
 
 	// check whether the user already exists using the email, return false [redirect to login page if exists]
@@ -360,24 +343,29 @@ private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e
 
 	if (conn->dr->Read()) {
 		// if the user exists, return false
-		MessageBox::Show("User Already Exists");
+		MessageBox::Show("Student Already Exists");
 	}
+	conn->closeConnection();
 
+	conn->openConnection();
 	// if the user does not exist, register the user, return true
-	conn->executeQuery("INSERT INTO users (email, first_name, last_name, password, role) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', '" + password + "', student)");
-
-	// insert user if student into student table
+	conn->executeQuery("INSERT INTO users (email, first_name, last_name, password, role) VALUES ('" + email + "', '" + firstName + "', '" + lastName + "', 'password', 'student')");
+	conn->closeConnection();
 
 	// get the user_id of the user
+	conn->openConnection();
 	String^ query = "SELECT user_id FROM users WHERE email = '" + email + "'";
 	conn->executeQuery(query);
 	conn->dr->Read();
 	String^ user_id = conn->dr->GetString(0);
+	conn->closeConnection();
 
-	conn->executeQuery("INSERT INTO students (user_id, date_of_birth, major, profile_picture) VALUES ('" + user_id + "', '"  + email + "', '" + dob + "', '" + major + "', '" + picture + "')");
+	// add the student to the students table
+	conn->openConnection();
+	conn->executeQuery("INSERT INTO students (user_id, date_of_birth, major, profile_picture, year_group) VALUES ('" + user_id + "', '"+ dobFormatted + "', '" + major + "', '" + picture + "', '" + year_group +"')");
 	conn->closeConnection();
 	
-	MessageBox::Show("User Registered Successfully");
+	MessageBox::Show("Student Added Successfully");
 }
 private: System::Void txtDepartment_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
