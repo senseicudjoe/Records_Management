@@ -72,7 +72,7 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -323,40 +323,40 @@ namespace RecordsManagement {
 	private: System::Void comboBox4_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 
-		   private: void fillFacultyComboBox(void) {
-			   // Initialize database connection
-			   db^ conn = gcnew db();
-			   conn->openConnection();
+	private: void fillFacultyComboBox(void) {
+		// Initialize database connection
+		db^ conn = gcnew db();
+		conn->openConnection();
 
-			   // Query to fetch faculty details
-			   String^ query = "SELECT " +
-				   "u.user_id, " +
-				   "CONCAT(u.first_name, ' ', u.last_name) AS full_name, " +
-				   "f.faculty_id " +
-				   "FROM users u " +
-				   "JOIN faculty f ON u.user_id = f.user_id " +
-				   "WHERE u.role = 'faculty'";
+		// Query to fetch faculty details
+		String^ query = "SELECT " +
+			"u.user_id, " +
+			"CONCAT(u.first_name, ' ', u.last_name) AS full_name, " +
+			"f.faculty_id " +
+			"FROM users u " +
+			"JOIN faculty f ON u.user_id = f.user_id " +
+			"WHERE u.role = 'faculty'";
 
-			   // Fill a DataTable with the query result
-			   DataTable^ dt = conn->fillDataTable(query);
-			   conn->closeConnection();
+		// Fill a DataTable with the query result
+		DataTable^ dt = conn->fillDataTable(query);
+		conn->closeConnection();
 
-			   // Loop through the DataTable rows to populate the ComboBox
-			   for (int i = 0; i < dt->Rows->Count; i++) {
-				   // Combine first and last name for the display value
-				   String^ facultyName = dt->Rows[i]->default["full_name"]->ToString();
+		// Loop through the DataTable rows to populate the ComboBox
+		for (int i = 0; i < dt->Rows->Count; i++) {
+			// Combine first and last name for the display value
+			String^ facultyName = dt->Rows[i]->default["full_name"]->ToString();
 
-				   // Create a ComboBoxItem to store both the display name and faculty_id
-				   comboBox4->Items->Add(gcnew KeyValuePair<String^, String^>(
-					   facultyName,
-					   dt->Rows[i]->default["faculty_id"]->ToString()
-				   ));
-			   }
+			// Create a ComboBoxItem to store both the display name and faculty_id
+			comboBox4->Items->Add(gcnew KeyValuePair<String^, String^>(
+				facultyName,
+				dt->Rows[i]->default["faculty_id"]->ToString()
+			));
+		}
 
-			   // Set the ComboBox to display only the faculty name
-			   comboBox4->DisplayMember = "Key";
-			   comboBox4->ValueMember = "Value";
-		   }
+		// Set the ComboBox to display only the faculty name
+		comboBox4->DisplayMember = "Key";
+		comboBox4->ValueMember = "Value";
+	}
 
 	private: void fillFields(String^ course_id) {
 		// Initialize database connection
@@ -390,155 +390,130 @@ namespace RecordsManagement {
 		textBox2->Text = dt->Rows[0]->default["year_group"]->ToString();
 		comboBox4->Text = dt->Rows[0]->default["fullName"]->ToString();
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	// get the course_id from the table
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		// get the course_id from the table
 
-	updateCourse(course_id);
-	this->Close();
-}
+		updateCourse(course_id);
+		this->Close();
+	}
 
-	   private: void updateCourse(String^ course_id) {
-		   // Initialize database connection
-		   db^ conn = gcnew db();
-		   conn->openConnection();
+	private: void updateCourse(String^ course_id) {
+		// Initialize database connection
+		db^ conn = gcnew db();
+		conn->openConnection();
 
-		   // Query to update course details
-		   String^ query = "UPDATE courses c " +
-			   "JOIN facultyCourses fc ON c.course_id = fc.course_id " +
-			   "SET " +
-			   "c.course_name = '" + textBox1->Text + "', " +
-			   "c.credits = '" + comboBox1->Text + "', " +
-			   "c.semester = '" + comboBox2->Text + "', " +
-			   "c.description = '" + richTextBox1->Text + "', " +
-			   "c.year_group = '" + textBox2->Text + "', " +
-			   "fc.faculty_id = '" + ((KeyValuePair<String^, String^>^)comboBox4->SelectedItem)->Value + "' " +
-			   "WHERE c.course_id = " + course_id;
+		// Query to update course details
+		String^ query = "UPDATE courses c " +
+			"JOIN facultyCourses fc ON c.course_id = fc.course_id " +
+			"SET " +
+			"c.course_name = '" + textBox1->Text + "', " +
+			"c.credits = '" + comboBox1->Text + "', " +
+			"c.semester = '" + comboBox2->Text + "', " +
+			"c.description = '" + richTextBox1->Text + "', " +
+			"c.year_group = '" + textBox2->Text + "', " +
+			"fc.faculty_id = '" + ((KeyValuePair<String^, String^>^)comboBox4->SelectedItem)->Value + "' " +
+			"WHERE c.course_id = " + course_id;
 
-		   // Execute the query
-		   conn->executeQuery(query);
-		   conn->closeConnection();
+		// Execute the query
+		conn->executeQuery(query);
+		conn->closeConnection();
 
-		   // Update the course prerequisites
-		   updatePrerequisites(course_id);
+		// Update the course prerequisites
+		updatePrerequisites(course_id);
 
-		   // Show a success message
-		   MessageBox::Show("Course details updated successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	   }
-private: System::Void comboBox3_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+		// Show a success message
+		MessageBox::Show("Course details updated successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	private: System::Void comboBox3_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 
-	   private: void fillListView(String^ course_id) {
-		   db^ conn = gcnew db();
-		   conn->openConnection();
+	private: void fillListView(String^ course_id) {
+		db^ conn = gcnew db();
+		conn->openConnection();
 
-		   // Query to fetch course_id prerequisites
-		   String^ query = "SELECT " +
-			   "cp.course_id, " +
-			   "c.course_name " +
-			   "FROM coursePrerequisites cp " +
-			   "JOIN courses c ON cp.prerequisite_course_id = c.course_id " +
-			   "WHERE cp.course_id = " + course_id;
-		   listBoxPrerequisites->Items->Clear();
+		// Query to fetch course_id prerequisites
+		String^ query = "SELECT " +
+			"c.course_name " +
+			"FROM coursePrerequisites cp " +
+			"JOIN courses c ON cp.prerequisite_course_id = c.course_id " +
+			"WHERE cp.course_id = " + course_id;
+		listBoxPrerequisites->Items->Clear();
 
-		   // Fill a DataTable with the query result
-		   DataTable^ dt = conn->fillDataTable(query);
+		// fill the data table with the query result
+		DataTable^ dt = conn->fillDataTable(query);
 
-		   // Loop through the DataTable rows to populate the ListBox with the course_name (only show course_name)
-		   for (int i = 0; i < dt->Rows->Count; i++) {
-			   listBoxPrerequisites->Items->Add(gcnew KeyValuePair<String^, String^>(
-				   dt->Rows[i]->default["course_name"]->ToString(),
-				   dt->Rows[i]->default["course_id"]->ToString()
-			   ));
-		   }
+		// loop through the data table rows to populate the list view
+		for (int i = 0; i < dt->Rows->Count; i++) {
+			listBoxPrerequisites->Items->Add(dt->Rows[i]->default["course_name"]->ToString());
+		}
 
-		   // set the listBox to only show the Key
-		   listBoxPrerequisites->DisplayMember = "Key";
-		   listBoxPrerequisites->ValueMember = "Value";
-		   
-		   conn->closeConnection();
-	   }
+		conn->closeConnection();
+	}
 
-	   private: void fillPrerequisitesComboBox(void) {
-		   // Initialize database connection
-		   db^ conn = gcnew db();
-		   conn->openConnection();
-		   // Query to fetch course details
-		   String^ query = "SELECT " +
-			   "course_id, " +
-			   "course_name " +
-			   "FROM courses";
+	private: void fillPrerequisitesComboBox(void) {
+		// Initialize database connection
+		db^ conn = gcnew db();
+		conn->openConnection();
+		// Query to fetch course details
+		String^ query = "SELECT " +
+			"course_name "
+			"FROM courses";
 
-		   // Fill a DataTable with the query result
-		   DataTable^ dt = conn->fillDataTable(query);
-		   conn->closeConnection();
+		// Fill a DataTable with the query result
+		DataTable^ dt = conn->fillDataTable(query);
+		conn->closeConnection();
 
-		   // only add courses that are not the current course and its prerequisites
-		   for (int i = 0; i < listBoxPrerequisites->Items->Count; i++) {
-			   String^ course_name = ((KeyValuePair<String^, String^>^)listBoxPrerequisites->Items[i])->Key;
+		// Loop through the DataTable rows to populate the ComboBox with no key value pair
+		for (int i = 0; i < dt->Rows->Count; i++) {
+			comboBox3->Items->Add(dt->Rows[i]->default["course_name"]->ToString());
+		}
 
-			   // add the current course to the list of prerequisites
-			   if (i == 0) {
-				   comboBox3->Items->Add(gcnew KeyValuePair<String^, String^>(
-					   course_name,
-					   course_id
-				   ));
-			   }
+		
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Add the selected prerequisite course to the list
+		listBoxPrerequisites->Items->Add(comboBox3->Text);
 
-			   for (int j = 0; j < dt->Rows->Count; j++) {
-				   if (dt->Rows[j]->default["course_name"]->ToString() == course_name) {
-					   dt->Rows->RemoveAt(j);
-					   break;
-				   }
-			   }
-		   }
+		// Remove the selected prerequisite course from the ComboBo
+		comboBox3->Items->Remove(comboBox3->SelectedItem);
+	}
 
-		   // Loop through the DataTable rows to populate the ComboBox
-		   for (int i = 0; i < dt->Rows->Count; i++) {
-			   // Create a ComboBoxItem to store both the display name and course_id
-			   comboBox3->Items->Add(gcnew KeyValuePair<String^, String^>(
-				   dt->Rows[i]->default["course_name"]->ToString(),
-				   dt->Rows[i]->default["course_id"]->ToString()
-			   ));
-		   }
-		   // Set the ComboBox to display only the course name
-		   comboBox3->DisplayMember = "Key";
-		   comboBox3->ValueMember = "Value";
-	   }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Add the selected prerequisite course to the list
-	listBoxPrerequisites->Items->Add(comboBox3->Text);
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Remove the selected prerequisite course from the list
+		comboBox3->Items->Add(listBoxPrerequisites->SelectedItem);
 
-	// Remove the selected prerequisite course from the ComboBo
-	comboBox3->Items->Remove(comboBox3->SelectedItem);
-}
+		MessageBox::Show("Selected Item: ", (listBoxPrerequisites->SelectedItem)->ToString());
 
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Remove the selected prerequisite course from the list
-	comboBox3->Items->Add(listBoxPrerequisites->SelectedItem);
-	listBoxPrerequisites->Items->Remove(listBoxPrerequisites->SelectedItem);
-}
+		listBoxPrerequisites->Items->Remove(listBoxPrerequisites->SelectedItem);
+	}
 
-	   private: void updatePrerequisites(String^ course_id) {
-		   // Initialize database connection
-		   db^ conn = gcnew db();
-		   conn->openConnection();
+	private: void updatePrerequisites(String^ course_id) {
+		// Initialize database connection
+		db^ conn = gcnew db();
+		conn->openConnection();
 
-		   // Query to delete all the prerequisites for the course
-		   String^ query = "DELETE FROM coursePrerequisites WHERE course_id = " + course_id;
-		   conn->executeQuery(query);
-		   conn->closeConnection();
+		// Query to delete all the prerequisites for the course
+		String^ query = "DELETE FROM coursePrerequisites WHERE course_id = " + course_id;
+		conn->executeQuery(query);
+		conn->closeConnection();
 
-		   // Loop through the ListBox items to insert the prerequisites
-		   for (int i = 0; i < listBoxPrerequisites->Items->Count; i++) {
-			   conn->openConnection();
-			   // Get the course_id of the prerequisite course
-			   String^ prerequisite_course_id = ((KeyValuePair<String^, String^>^)listBoxPrerequisites->Items[i])->Value;
+		// Loop through the ListBox items to insert the prerequisites
+		for (int i = 0; i < listBoxPrerequisites->Items->Count; i++) {
+			conn->openConnection();
+			// Get the course_id of the prerequisite course using the course_name
+			String^ prerequisite_course_name = listBoxPrerequisites->Items[i]->ToString();
+			query = "SELECT course_id FROM courses WHERE course_name = '" + prerequisite_course_name + "'";
+			DataTable^ dt = conn->fillDataTable(query);
 
-			   // Query to insert the prerequisite course
-			   query = "INSERT INTO coursePrerequisites (course_id, prerequisite_course_id) VALUES (" + course_id + ", " + prerequisite_course_id + ")";
-			   conn->executeQuery(query);
-			   conn->closeConnection();
-		   }
-	   }
-};
+			// Get the course_id from the DataTable
+			String^ prerequisite_course_id = dt->Rows[0]->default["course_id"]->ToString();
+
+			// Query to insert the prerequisite course
+			query = "INSERT INTO coursePrerequisites (course_id, prerequisite_course_id) VALUES (" + course_id + ", " + prerequisite_course_id + ")";
+			conn->executeQuery(query);
+			conn->closeConnection();
+		}
+	}
+
+	};
 }

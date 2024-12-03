@@ -92,7 +92,7 @@ namespace RecordsManagement {
 		db^ con = gcnew db();
 
 		con->openConnection();
-		String^ query = "SELECT " +
+		String ^ query = "SELECT DISTINCT " +
 			"cs.schedule_id, " +
 			"c.course_name, " +
 			"CONCAT(u.first_name, ' ', u.last_name) AS faculty_name, " +
@@ -103,7 +103,7 @@ namespace RecordsManagement {
 			"FROM " +
 			"ClassSchedule cs " +
 			"JOIN " +
-			"Courses c ON cs.course_id = c.course_id "
+			"Courses c ON cs.course_id = c.course_id " +
 			"JOIN " +
 			"Faculty f ON cs.faculty_id = f.faculty_id " +
 			"JOIN " +
@@ -111,11 +111,12 @@ namespace RecordsManagement {
 			"JOIN " +
 			"Enrollment e ON e.course_id = cs.course_id " +
 			"WHERE " +
-			"e.student_id = " + student_id + " " +
-			"AND cs.semester = " + "'" + current_semester + "'" + " " +
+			"e.student_id = " + student_id + " "
+			"AND cs.semester = '" + current_semester + "' "
 			"ORDER BY "
-			"FIELD(cs.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'), " +
+			"FIELD(cs.day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'), "
 			"cs.start_time ASC;";
+
 		DataTable^ dt = con->fillDataTable(query);
 		if (dt != nullptr) {
 			dataGridView1->DataSource = dt;

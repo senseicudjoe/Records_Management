@@ -110,11 +110,10 @@ namespace RecordsManagement {
 
 			String^ query = "SELECT " +
 				"s.student_id," +
-				"CONCAT(u.first_name, ' ', u.last_name) AS student_name," +
 				"c.course_name," +
 				"c.credits," +
 				"t.semester," +
-				"t.final_grade AS grade_value" +
+				"t.final_grade AS grade_value " +
 				"FROM " +
 				"Transcripts t " +
 				"JOIN " +
@@ -130,10 +129,15 @@ namespace RecordsManagement {
 			DataTable^ dt = con->fillDataTable(query);
 			if (dt != nullptr) {
 				dataGridView1->DataSource = dt;
+
+				dataGridView1->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
+				dataGridView1->AutoSizeRowsMode = DataGridViewAutoSizeRowsMode::AllCells;
 			}
 			else {
 				MessageBox::Show("Error loading data");
 			}
+
+			con->closeConnection();
 		}
 
 	};

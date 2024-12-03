@@ -162,20 +162,21 @@ namespace RecordsManagement {
 			   database->openConnection();
 
 			   // get all the courses and display in the Grid
-			   String^ query = "SELECT " +
-				   "c.course_id, " +
-				   "c.course_name, " +
-				   "c.credits, " +
-				   "c.semester, " +
-				   "CONCAT(u.first_name, ' ', u.last_name) AS Faculty, " +
-				   "GROUP_CONCAT(prereq.course_name SEPARATOR ', ') AS Prerequisites " +
-				   "FROM courses c " +
-				   "JOIN facultyCourses fc ON c.course_id = fc.course_id " +
-				   "JOIN coursePrerequisites cp ON c.course_id = cp.course_id " +
-				   "JOIN courses prereq ON cp.prerequisite_course_id = prereq.course_id " +  // Join to get the course names for prerequisites
-				   "JOIN Faculty f ON fc.faculty_id = f.faculty_id " +
-				   "JOIN users u ON f.user_id = u.user_id " +
+			   String^ query = "SELECT "
+				   "c.course_id,"
+				   "c.course_name,"
+				   "c.credits,"
+				   "c.semester,"
+				   "CONCAT(u.first_name, ' ', u.last_name) AS Faculty,"
+				   " GROUP_CONCAT(prereq.course_name SEPARATOR ', ') AS Prerequisites "
+				   "FROM courses c "
+				   "JOIN facultyCourses fc ON c.course_id = fc.course_id "
+				   "LEFT JOIN coursePrerequisites cp ON c.course_id = cp.course_id "  
+				   "LEFT JOIN courses prereq ON cp.prerequisite_course_id = prereq.course_id "
+				   "JOIN Faculty f ON fc.faculty_id = f.faculty_id "
+				   "JOIN users u ON f.user_id = u.user_id "
 				   "GROUP BY c.course_id, c.course_name, c.credits, c.semester, u.first_name, u.last_name";
+
 			   DataTable^ dt = database->fillDataTable(query);
 			   dataGridView1->DataSource = dt;
 
