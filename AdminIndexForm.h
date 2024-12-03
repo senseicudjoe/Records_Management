@@ -3,6 +3,7 @@
 #include "AdminFinancials.h"
 #include "AdminManageCourses.h"
 #include "AdminManageFaculty.h"
+#include "db_connection.h"
 
 
 namespace RecordsManagement {
@@ -44,10 +45,10 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::ToolStripMenuItem^ manageStudentsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ manageFacuToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ manageCoursesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ reportsToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ financialsToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ geneToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ generateFacultyReportToolStripMenuItem;
+
+
 
 
 
@@ -69,9 +70,6 @@ namespace RecordsManagement {
 			this->manageStudentsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->manageFacuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->manageCoursesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->reportsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->geneToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->generateFacultyReportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->financialsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -80,77 +78,56 @@ namespace RecordsManagement {
 			// 
 			this->menuStrip1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(32, 32);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->manageStudentsToolStripMenuItem,
-					this->manageFacuToolStripMenuItem, this->manageCoursesToolStripMenuItem, this->reportsToolStripMenuItem, this->financialsToolStripMenuItem
+					this->manageFacuToolStripMenuItem, this->manageCoursesToolStripMenuItem, this->financialsToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(2139, 62);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 1, 0, 1);
+			this->menuStrip1->Size = System::Drawing::Size(1283, 38);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// manageStudentsToolStripMenuItem
 			// 
 			this->manageStudentsToolStripMenuItem->Name = L"manageStudentsToolStripMenuItem";
-			this->manageStudentsToolStripMenuItem->Size = System::Drawing::Size(329, 58);
+			this->manageStudentsToolStripMenuItem->Size = System::Drawing::Size(215, 36);
 			this->manageStudentsToolStripMenuItem->Text = L"Manage Students";
 			this->manageStudentsToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminIndexForm::manageStudentsToolStripMenuItem_Click);
 			// 
 			// manageFacuToolStripMenuItem
 			// 
 			this->manageFacuToolStripMenuItem->Name = L"manageFacuToolStripMenuItem";
-			this->manageFacuToolStripMenuItem->Size = System::Drawing::Size(299, 58);
+			this->manageFacuToolStripMenuItem->Size = System::Drawing::Size(196, 36);
 			this->manageFacuToolStripMenuItem->Text = L"Manage Faculty";
 			this->manageFacuToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminIndexForm::manageFacuToolStripMenuItem_Click);
 			// 
 			// manageCoursesToolStripMenuItem
 			// 
 			this->manageCoursesToolStripMenuItem->Name = L"manageCoursesToolStripMenuItem";
-			this->manageCoursesToolStripMenuItem->Size = System::Drawing::Size(315, 58);
+			this->manageCoursesToolStripMenuItem->Size = System::Drawing::Size(206, 36);
 			this->manageCoursesToolStripMenuItem->Text = L"Manage Courses";
 			this->manageCoursesToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminIndexForm::manageCoursesToolStripMenuItem_Click);
-			// 
-			// reportsToolStripMenuItem
-			// 
-			this->reportsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->geneToolStripMenuItem,
-					this->generateFacultyReportToolStripMenuItem
-			});
-			this->reportsToolStripMenuItem->Name = L"reportsToolStripMenuItem";
-			this->reportsToolStripMenuItem->Size = System::Drawing::Size(168, 58);
-			this->reportsToolStripMenuItem->Text = L"Reports";
-			// 
-			// geneToolStripMenuItem
-			// 
-			this->geneToolStripMenuItem->Name = L"geneToolStripMenuItem";
-			this->geneToolStripMenuItem->Size = System::Drawing::Size(569, 58);
-			this->geneToolStripMenuItem->Text = L"Generate Student Report";
-			// 
-			// generateFacultyReportToolStripMenuItem
-			// 
-			this->generateFacultyReportToolStripMenuItem->Name = L"generateFacultyReportToolStripMenuItem";
-			this->generateFacultyReportToolStripMenuItem->Size = System::Drawing::Size(569, 58);
-			this->generateFacultyReportToolStripMenuItem->Text = L"Generate Faculty Report";
 			// 
 			// financialsToolStripMenuItem
 			// 
 			this->financialsToolStripMenuItem->Name = L"financialsToolStripMenuItem";
-			this->financialsToolStripMenuItem->Size = System::Drawing::Size(200, 58);
+			this->financialsToolStripMenuItem->Size = System::Drawing::Size(131, 36);
 			this->financialsToolStripMenuItem->Text = L"Financials";
 			this->financialsToolStripMenuItem->Click += gcnew System::EventHandler(this, &AdminIndexForm::financialsToolStripMenuItem_Click);
 			// 
 			// AdminIndexForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(2139, 1140);
+			this->ClientSize = System::Drawing::Size(1283, 675);
 			this->Controls->Add(this->menuStrip1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"AdminIndexForm";
 			this->Text = L"AdminIndexForm";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -184,6 +161,13 @@ private: System::Void financialsToolStripMenuItem_Click(System::Object^ sender, 
 	AdminFinancials^ finance = gcnew AdminFinancials();
 	finance->Size = System::Drawing::Size(915, 600);
 	finance->ShowDialog();
+}
+private: System::Void geneToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	// on click generate a txt with all the students in the course order by year group
+	db^ conn = gcnew db();
+	conn->openConnection();
+
+	conn->closeConnection();
 }
 };
 }

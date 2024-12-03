@@ -1,6 +1,7 @@
 #pragma once
 
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -20,7 +21,7 @@ namespace RecordsManagement {
 		studentSchedule(void)
 		{
 			InitializeComponent();
-			loadClassSchedule("1", "SEM1");
+			loadClassSchedule(GlobalVariables::currentUser->getStudentID(), "SEM1");
 			//
 			//TODO: Add the constructor code here
 			//

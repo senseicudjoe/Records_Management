@@ -1,6 +1,8 @@
 #pragma once
 
 #include "db_connection.h"
+#include "GlobalVariable.h"
+#include "updatePassword.h"
 
 namespace RecordsManagement {
 
@@ -20,7 +22,7 @@ namespace RecordsManagement {
 		studentProfile(void)
 		{
 			InitializeComponent();
-			loadProfile("1");
+			loadProfile();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -64,6 +66,8 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Button^ button2;
 
+	private: System::Windows::Forms::Label^ label7;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -92,11 +96,13 @@ namespace RecordsManagement {
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dtpEnrollmentDate
 			// 
+			this->dtpEnrollmentDate->Enabled = false;
 			this->dtpEnrollmentDate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dtpEnrollmentDate->Format = System::Windows::Forms::DateTimePickerFormat::Short;
@@ -108,6 +114,7 @@ namespace RecordsManagement {
 			// 
 			// dtpDOB
 			// 
+			this->dtpDOB->Enabled = false;
 			this->dtpDOB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->dtpDOB->Format = System::Windows::Forms::DateTimePickerFormat::Short;
@@ -116,6 +123,7 @@ namespace RecordsManagement {
 			this->dtpDOB->Name = L"dtpDOB";
 			this->dtpDOB->Size = System::Drawing::Size(189, 34);
 			this->dtpDOB->TabIndex = 29;
+			this->dtpDOB->ValueChanged += gcnew System::EventHandler(this, &studentProfile::dtpDOB_ValueChanged);
 			// 
 			// txtLName
 			// 
@@ -125,6 +133,7 @@ namespace RecordsManagement {
 			this->txtLName->Margin = System::Windows::Forms::Padding(2);
 			this->txtLName->Multiline = true;
 			this->txtLName->Name = L"txtLName";
+			this->txtLName->ReadOnly = true;
 			this->txtLName->Size = System::Drawing::Size(467, 30);
 			this->txtLName->TabIndex = 28;
 			// 
@@ -136,6 +145,7 @@ namespace RecordsManagement {
 			this->txtFName->Margin = System::Windows::Forms::Padding(2);
 			this->txtFName->Multiline = true;
 			this->txtFName->Name = L"txtFName";
+			this->txtFName->ReadOnly = true;
 			this->txtFName->Size = System::Drawing::Size(467, 28);
 			this->txtFName->TabIndex = 27;
 			// 
@@ -231,6 +241,7 @@ namespace RecordsManagement {
 			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
+			this->textBox1->ReadOnly = true;
 			this->textBox1->Size = System::Drawing::Size(467, 31);
 			this->textBox1->TabIndex = 37;
 			// 
@@ -242,6 +253,7 @@ namespace RecordsManagement {
 			this->textBox2->Margin = System::Windows::Forms::Padding(2);
 			this->textBox2->Multiline = true;
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->ReadOnly = true;
 			this->textBox2->Size = System::Drawing::Size(467, 31);
 			this->textBox2->TabIndex = 39;
 			// 
@@ -259,19 +271,33 @@ namespace RecordsManagement {
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18));
-			this->button2->Location = System::Drawing::Point(435, 526);
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->button2->Location = System::Drawing::Point(253, 509);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(340, 82);
+			this->button2->Size = System::Drawing::Size(334, 44);
 			this->button2->TabIndex = 40;
-			this->button2->Text = L"Edit";
+			this->button2->Text = L"Update Password";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &studentProfile::button2_Click);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(11, 524);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(126, 29);
+			this->label7->TabIndex = 42;
+			this->label7->Text = L"Password:";
 			// 
 			// studentProfile
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1183, 675);
+			this->Controls->Add(this->label7);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label6);
@@ -301,9 +327,29 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		// upload profile picture
+		OpenFileDialog^ dialog = gcnew OpenFileDialog();
+		dialog->Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+		if (dialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			pictureBox1->ImageLocation = dialog->FileName;
+		}
+
+		// save the image to the database
+		db^ con = gcnew db();
+		con->openConnection();
+		String^ user_id = GlobalVariables::currentUser->getId();
+		MessageBox::Show(pictureBox1->ImageLocation);
+		String^ query = "UPDATE students SET profile_picture = '" + pictureBox1->ImageLocation + "' WHERE user_id = " + user_id;
+
+		con->executeQuery(query);
+		MessageBox::Show("Profile picture updated successfully.");
 	}
 
-		   private: void loadProfile(String^ student_id) {
+		   private: void loadProfile() {
+			   // get the student ID from the global variable
+			   
+			   String^ student_id = GlobalVariables::currentUser->getStudentID();
+
 			   db^ con = gcnew db();
 			   con->openConnection();
 
@@ -341,6 +387,13 @@ namespace RecordsManagement {
 			   con->closeConnection();
 		   }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	// redirect to update password form
+	updatePassword^ update = gcnew updatePassword();
+	update->ShowDialog();
+}
+private: System::Void dtpDOB_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
