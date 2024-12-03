@@ -128,11 +128,13 @@
     <ClCompile Include="AdminManageCourses.cpp" />
     <ClCompile Include="AdminManageFaculty.cpp" />
     <ClCompile Include="AdminManageStudents.cpp" />
+    <ClCompile Include="FacultyAddGrade.cpp" />
     <ClCompile Include="FacultyClassRoster.cpp" />
     <ClCompile Include="FacultyGradesh.cpp" />
     <ClCompile Include="FacultyIndexForm.cpp" />
     <ClCompile Include="FacultyManageCourses.cpp" />
     <ClCompile Include="FacultyProfile.cpp" />
+    <ClCompile Include="FacultyUpdatePassword.cpp" />
     <ClCompile Include="indexForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="paymentForm.cpp" />
@@ -162,6 +164,9 @@
     <ClInclude Include="anyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FacultyAddGrade.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FacultyClassRoster.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -178,6 +183,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="db_connection.h" />
+    <ClInclude Include="FacultyUpdatePassword.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="indexForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -225,6 +233,9 @@
     <EmbeddedResource Include="anyForm.resx">
       <DependentUpon>anyForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FacultyAddGrade.resx">
+      <DependentUpon>FacultyAddGrade.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacultyClassRoster.resx">
       <DependentUpon>FacultyClassRoster.h</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacultyProfile.resx">
       <DependentUpon>FacultyProfile.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacultyUpdatePassword.resx">
+      <DependentUpon>FacultyUpdatePassword.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="indexForm.resx">
       <DependentUpon>indexForm.h</DependentUpon>

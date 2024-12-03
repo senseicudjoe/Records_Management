@@ -1,8 +1,4 @@
 #pragma once
-#include "indexForm.h"
-#include "FacultyIndexForm.h"
-#include "AdminIndexForm.h"
-#include "db_connection.h"
 
 namespace RecordsManagement {
 
@@ -14,12 +10,12 @@ namespace RecordsManagement {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for LoginForm
+	/// Summary for FacultyUpdatePassword
 	/// </summary>
-	public ref class LoginForm : public System::Windows::Forms::Form
+	public ref class FacultyUpdatePassword : public System::Windows::Forms::Form
 	{
 	public:
-		LoginForm(void)
+		FacultyUpdatePassword(void)
 		{
 			InitializeComponent();
 			//
@@ -31,7 +27,7 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~LoginForm()
+		~FacultyUpdatePassword()
 		{
 			if (components)
 			{
@@ -41,8 +37,10 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::Label^ label1;
 	protected:
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::Button^ button1;
 
 	private:
@@ -60,8 +58,10 @@ namespace RecordsManagement {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
@@ -70,113 +70,91 @@ namespace RecordsManagement {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(173, 371);
+			this->label1->Location = System::Drawing::Point(77, 86);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(110, 42);
+			this->label1->Size = System::Drawing::Size(251, 42);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Email";
+			this->label1->Text = L"Old Password";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(173, 519);
+			this->label2->Location = System::Drawing::Point(77, 311);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(183, 42);
+			this->label2->Size = System::Drawing::Size(268, 42);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Password";
+			this->label2->Text = L"New Password";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(77, 553);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(407, 42);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"Confirm New Password";
 			// 
 			// textBox1
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(421, 364);
+			this->textBox1->Location = System::Drawing::Point(84, 162);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(661, 49);
-			this->textBox1->TabIndex = 2;
+			this->textBox1->Size = System::Drawing::Size(780, 49);
+			this->textBox1->TabIndex = 3;
 			// 
 			// textBox2
 			// 
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(421, 512);
+			this->textBox2->Location = System::Drawing::Point(84, 400);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(661, 49);
-			this->textBox2->TabIndex = 3;
-			this->textBox2->UseSystemPasswordChar = true;
+			this->textBox2->Size = System::Drawing::Size(780, 49);
+			this->textBox2->TabIndex = 4;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox3->Location = System::Drawing::Point(84, 623);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(780, 49);
+			this->textBox3->TabIndex = 5;
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(180, 688);
+			this->button1->Location = System::Drawing::Point(351, 756);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(902, 80);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"Login";
+			this->button1->Size = System::Drawing::Size(270, 70);
+			this->button1->TabIndex = 6;
+			this->button1->Text = L"Confirm";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
 			// 
-			// LoginForm
+			// FacultyUpdatePassword
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1274, 1229);
+			this->ClientSize = System::Drawing::Size(955, 927);
 			this->Controls->Add(this->button1);
+			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			this->MaximizeBox = false;
-			this->MinimizeBox = false;
-			this->Name = L"LoginForm";
+			this->Name = L"FacultyUpdatePassword";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"LoginForm";
-			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &LoginForm::LoginForm_FormClosed);
+			this->Text = L"Change Password";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		FacultyIndexForm^ index = gcnew FacultyIndexForm();
-		index->ShowDialog();
-		//db^ con = gcnew db();
-
-		//// take the email and password from the textboxes
-		//String^ email = textBox1->Text;
-		//String^ password = textBox2->Text;
-
-		//// find the email in the Users table and get the respective role and password
-		//con->openConnection();
-
-		//String^ query = "SELECT * FROM users WHERE email = '" + email + "'";
-
-		//con->executeQuery(query);
-
-		//if (con->dr->Read()) {
-		//	String^ role = con->dr->GetString(5);
-		//	String^ pass = con->dr->GetString(4);
-		//	if (pass == password) {
-		//		MessageBox::Show("Login Successful");
-		//		this->Hide();
-		//		index->ShowDialog();
-		//	}
-		//	else {
-		//		MessageBox::Show("Incorrect Password");
-		//	}
-
-		//	con->closeConnection();
-		//}
-		//else {
-		//	MessageBox::Show("User not found");
-		//}
-	}
-private: System::Void LoginForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	Application::Exit();
-}
-};
+	};
 }
