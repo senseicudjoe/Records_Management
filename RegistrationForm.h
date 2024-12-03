@@ -334,8 +334,6 @@ private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e
 	DateTime dob = dtpDOB->Value; // Get DateTime value
 	String^ dobFormatted = dob.ToString("yyyy-MM-dd");
 
-	MessageBox::Show(dobFormatted); // Debugging: Display the formatted date
-
 	String^ major = txtDepartment->Text;
 	String^ year_group = textBox2->Text;
 	String^ picture = EscapeBackslashes( btnPicture->ImageLocation);

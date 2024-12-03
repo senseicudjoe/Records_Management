@@ -315,7 +315,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		String^ query = "SELECT DISTINCT(semester) FROM courses";
 		DataTable^ dt = con->fillDataTable(query);
-		MessageBox::Show(dt->Rows[0]->ItemArray[0]->ToString());
 		for (int i = 0; i < dt->Rows->Count; i++) {
 			String^ sem = dt->Rows[i]->ItemArray[0]->ToString();
 			Semester->Items->Add(sem);

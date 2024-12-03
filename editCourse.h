@@ -482,8 +482,6 @@ namespace RecordsManagement {
 		// Remove the selected prerequisite course from the list
 		comboBox3->Items->Add(listBoxPrerequisites->SelectedItem);
 
-		MessageBox::Show("Selected Item: ", (listBoxPrerequisites->SelectedItem)->ToString());
-
 		listBoxPrerequisites->Items->Remove(listBoxPrerequisites->SelectedItem);
 	}
 

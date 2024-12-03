@@ -338,7 +338,6 @@ namespace RecordsManagement {
 		db^ con = gcnew db();
 		con->openConnection();
 		String^ user_id = GlobalVariables::currentUser->getId();
-		MessageBox::Show(pictureBox1->ImageLocation);
 		String^ query = "UPDATE students SET profile_picture = '" + pictureBox1->ImageLocation + "' WHERE user_id = " + user_id;
 
 		con->executeQuery(query);

@@ -353,8 +353,6 @@ namespace RecordsManagement {
 
     query += " WHERE u.user_id = " + user_id;
 
-    // Debug SQL query
-    MessageBox::Show(query);
 
     // Execute the query
     connect->executeQuery(query);
@@ -378,9 +376,6 @@ namespace RecordsManagement {
 			"FROM users u "
 			"JOIN students s ON u.user_id = s.user_id "
 			"WHERE u.user_id = " + user_id;
-
-		// Debug SQL
-		MessageBox::Show(query);
 
 		DataTable^ dt = connect->fillDataTable(query);
 		connect->closeConnection();

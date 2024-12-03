@@ -165,7 +165,6 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, Sys
 		" AND YEAR(g.date_recorded) = " + DateTime::Now.Year + " " +
 		"ORDER BY " +
 		"g.date_recorded DESC";
-	MessageBox::Show(query);
 
 	DataTable^ dt = con->fillDataTable(query);
 	dataGridView1->DataSource = dt;

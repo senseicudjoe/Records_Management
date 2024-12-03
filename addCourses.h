@@ -214,7 +214,7 @@ namespace RecordsManagement {
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-			this->button1->Location = System::Drawing::Point(636, 936);
+			this->button1->Location = System::Drawing::Point(628, 601);
 			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(328, 72);
@@ -262,7 +262,7 @@ namespace RecordsManagement {
 			this->listBoxPrerequisites->Margin = System::Windows::Forms::Padding(4);
 			this->listBoxPrerequisites->Name = L"listBoxPrerequisites";
 			this->listBoxPrerequisites->SelectionMode = System::Windows::Forms::SelectionMode::None;
-			this->listBoxPrerequisites->Size = System::Drawing::Size(505, 444);
+			this->listBoxPrerequisites->Size = System::Drawing::Size(434, 184);
 			this->listBoxPrerequisites->TabIndex = 17;
 			// 
 			// button2
@@ -291,7 +291,7 @@ namespace RecordsManagement {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoScroll = true;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1520, 1038);
+			this->ClientSize = System::Drawing::Size(1520, 763);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->listBoxPrerequisites);
