@@ -153,7 +153,6 @@ namespace RecordsManagement {
 
 		String^ query = "SELECT DISTINCT c.course_name FROM FacultyCourses fc JOIN Courses c ON fc.course_id = c.course_id WHERE fc.faculty_id =" + facultyId;
 		DataTable^ dt = con->fillDataTable(query);
-		MessageBox::Show(dt->Rows[0]->ItemArray[0]->ToString());
 		for (int i = 0; i < dt->Rows->Count; i++) {
 			String^ course = dt->Rows[i]->ItemArray[0]->ToString();
 			comboBox1->Items->Add(course);
@@ -170,7 +169,6 @@ namespace RecordsManagement {
 
 		String^ query = "SELECT DISTINCT c.course_name FROM FacultyCourses fc JOIN Courses c ON fc.course_id = c.course_id WHERE fc.faculty_id =" + facultyId;
 		DataTable^ dt = con->fillDataTable(query);
-		MessageBox::Show(dt->Rows[0]->ItemArray[0]->ToString());
 		for (int i = 0; i < dt->Rows->Count; i++) {
 			String^ course = dt->Rows[i]->ItemArray[0]->ToString();
 			comboBox1->Items->Add(course);
@@ -185,7 +183,6 @@ namespace RecordsManagement {
 		db^ con = gcnew db();
 		con->openConnection();
 		String^ query = "SELECT S.student_id AS ID, CONCAT(U.first_name, ' ', U.last_name) AS student_name, S.major, S.year_group, G.grade FROM Enrollment E JOIN Students S ON E.student_id = S.student_id JOIN Users U ON S.user_id = U.user_id JOIN Grades G ON S.student_id = G.student_id JOIN Courses C ON E.course_id = C.course_id WHERE C.course_name = '"+ course +"' AND E.status = 'Enrolled';";
-		MessageBox::Show(query);
 		DataTable^ dt = con->fillDataTable(query);
 		con->closeConnection();
 		if (dt != nullptr) {
