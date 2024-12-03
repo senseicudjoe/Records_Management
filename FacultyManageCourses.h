@@ -1,5 +1,6 @@
 #pragma once
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -143,7 +144,7 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 		private: void FillCourse(void) {
-			String^ facultyId = "1";
+			String^ facultyId = GlobalVariables::currentUser->getFacultyID();
 			// get the semester
 			db^ con = gcnew db();
 			con->openConnection();

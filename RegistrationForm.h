@@ -315,6 +315,10 @@ namespace RecordsManagement {
 #pragma endregion
 	private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: String^ EscapeBackslashes(String^ input) {
+	// Replace single backslashes with double backslashes
+	return input->Replace("\\", "\\\\");
+}
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -334,7 +338,7 @@ private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e
 
 	String^ major = txtDepartment->Text;
 	String^ year_group = textBox2->Text;
-	String^ picture = btnPicture->ImageLocation;
+	String^ picture = EscapeBackslashes( btnPicture->ImageLocation);
 
 	// check whether the user already exists using the email, return false [redirect to login page if exists]
 	db^ conn = gcnew db(); // create a databse instance

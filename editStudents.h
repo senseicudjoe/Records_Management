@@ -427,9 +427,14 @@ private: System::Void UploadPicture_Click(System::Object^ sender, System::EventA
 	OpenFileDialog^ dialog = gcnew OpenFileDialog();
 	dialog->Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
 	if (dialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-		btnPicture->ImageLocation = dialog->FileName;
+		btnPicture->ImageLocation = EscapeBackslashes(dialog->FileName);
 	}
 
+}
+
+private: String^ EscapeBackslashes(String^ input) {
+	// Replace single backslashes with double backslashes
+	return input->Replace("\\", "\\\\");
 }
 private: System::Void dtpDOB_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 }

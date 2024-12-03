@@ -1,6 +1,7 @@
 #pragma once
 #include "db_connection.h"
 #include "FacultyAddGrade.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -144,7 +145,8 @@ namespace RecordsManagement {
 		}
 #pragma endregion
 	private: void FillCourse(void) {
-		String^ facultyId = "1";
+		String^ facultyId = GlobalVariables::currentUser->getFacultyID();
+
 		// get the semester
 		db^ con = gcnew db();
 		con->openConnection();
@@ -161,7 +163,7 @@ namespace RecordsManagement {
 	}
 
 	private: void FillYear(void) {
-		String^ facultyId = "1";
+		String^ facultyId = GlobalVariables::currentUser->getFacultyID();
 		// get the semester
 		db^ con = gcnew db();
 		con->openConnection();
@@ -211,5 +213,6 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	button1->PerformClick();
 
 }
+
 };
 }
