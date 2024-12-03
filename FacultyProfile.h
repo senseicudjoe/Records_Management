@@ -1,5 +1,6 @@
 #pragma once
 #include "db_connection.h"
+#include "GlobalVariable.h"
 
 namespace RecordsManagement {
 
@@ -230,13 +231,14 @@ namespace RecordsManagement {
 			this->Name = L"FacultyProfile";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FacultyProfile";
+			this->Load += gcnew System::EventHandler(this, &FacultyProfile::FacultyProfile_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 		private: void FillFields(void) {
-			String^ facultyId = "1";
+			String^ facultyId = GlobalVariables::currentUser->getFacultyID();
 			// get the semester
 			db^ con = gcnew db();
 			con->openConnection();
@@ -263,6 +265,8 @@ namespace RecordsManagement {
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void FacultyProfile_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

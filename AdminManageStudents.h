@@ -184,13 +184,13 @@ namespace RecordsManagement {
 				   "u.email, "
 				   "DATE_FORMAT(s.date_of_birth, '%d-%m-%Y') AS date_of_birth, "
 				   "s.major, "
-				   "s.profile_picture, "
 				   "s.year_group "
 				   "FROM users u "
 				   "JOIN students s ON u.user_id = s.user_id";
 
 			   DataTable^ dt = connect->fillDataTable(query);
 			   dataGridView1->DataSource = dt;
+			   dataGridView1->AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode::Fill;
 		   }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	// Open addFaculty form
@@ -239,6 +239,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	// Refresh the data grid view
 	loadStudent();
 }
+
+
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	// get the student id and get their Transcript from the Transcripts Table
 	DataGridViewRow^ row = dataGridView1->CurrentRow;

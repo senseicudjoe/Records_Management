@@ -53,7 +53,7 @@ namespace RecordsManagement {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -251,11 +251,11 @@ namespace RecordsManagement {
 		}
 	}
 
-private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	// Open the forgot password form
-	this->Hide();
-	forgotPassword^ forgot = gcnew forgotPassword();
-	forgot->ShowDialog();
+	private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		// Open the forgot password form
+		this->Hide();
+		forgotPassword^ forgot = gcnew forgotPassword();
+		forgot->ShowDialog();
 
 	this->Show();
 }
