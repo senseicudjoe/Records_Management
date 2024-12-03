@@ -1,5 +1,5 @@
 #pragma once
-
+#include "db_connection.h"
 
 namespace RecordsManagement {
 
@@ -19,6 +19,7 @@ namespace RecordsManagement {
 		FacultyProfile(void)
 		{
 			InitializeComponent();
+			FillFields();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -38,16 +39,17 @@ namespace RecordsManagement {
 
 	protected:
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ textEmail;
+
 
 
 	private: System::Windows::Forms::DateTimePicker^ dtpHireDate;
-	private: System::Windows::Forms::DateTimePicker^ dtpDOB;
+
 	private: System::Windows::Forms::TextBox^ txtLName;
 	private: System::Windows::Forms::TextBox^ txtFName;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label3;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
@@ -67,14 +69,12 @@ namespace RecordsManagement {
 		void InitializeComponent(void)
 		{
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textEmail = (gcnew System::Windows::Forms::TextBox());
 			this->dtpHireDate = (gcnew System::Windows::Forms::DateTimePicker());
-			this->dtpDOB = (gcnew System::Windows::Forms::DateTimePicker());
 			this->txtLName = (gcnew System::Windows::Forms::TextBox());
 			this->txtFName = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
@@ -86,41 +86,33 @@ namespace RecordsManagement {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(54, 723);
+			this->label6->Location = System::Drawing::Point(54, 616);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(232, 42);
 			this->label6->TabIndex = 52;
 			this->label6->Text = L"Department: ";
 			// 
-			// textBox1
+			// textEmail
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textEmail->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(426, 485);
-			this->textBox1->Multiline = true;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(698, 46);
-			this->textBox1->TabIndex = 51;
+			this->textEmail->Location = System::Drawing::Point(426, 378);
+			this->textEmail->Multiline = true;
+			this->textEmail->Name = L"textEmail";
+			this->textEmail->ReadOnly = true;
+			this->textEmail->Size = System::Drawing::Size(698, 46);
+			this->textEmail->TabIndex = 51;
 			// 
 			// dtpHireDate
 			// 
+			this->dtpHireDate->Enabled = false;
 			this->dtpHireDate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->dtpHireDate->Format = System::Windows::Forms::DateTimePickerFormat::Short;
-			this->dtpHireDate->Location = System::Drawing::Point(426, 606);
+			this->dtpHireDate->Location = System::Drawing::Point(426, 499);
 			this->dtpHireDate->Name = L"dtpHireDate";
 			this->dtpHireDate->Size = System::Drawing::Size(273, 49);
 			this->dtpHireDate->TabIndex = 48;
-			// 
-			// dtpDOB
-			// 
-			this->dtpDOB->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->dtpDOB->Format = System::Windows::Forms::DateTimePickerFormat::Short;
-			this->dtpDOB->Location = System::Drawing::Point(424, 366);
-			this->dtpDOB->Name = L"dtpDOB";
-			this->dtpDOB->Size = System::Drawing::Size(275, 49);
-			this->dtpDOB->TabIndex = 47;
 			// 
 			// txtLName
 			// 
@@ -129,6 +121,7 @@ namespace RecordsManagement {
 			this->txtLName->Location = System::Drawing::Point(426, 245);
 			this->txtLName->Multiline = true;
 			this->txtLName->Name = L"txtLName";
+			this->txtLName->ReadOnly = true;
 			this->txtLName->Size = System::Drawing::Size(698, 45);
 			this->txtLName->TabIndex = 46;
 			// 
@@ -139,6 +132,7 @@ namespace RecordsManagement {
 			this->txtFName->Location = System::Drawing::Point(426, 130);
 			this->txtFName->Multiline = true;
 			this->txtFName->Name = L"txtFName";
+			this->txtFName->ReadOnly = true;
 			this->txtFName->Size = System::Drawing::Size(698, 42);
 			this->txtFName->TabIndex = 45;
 			// 
@@ -147,7 +141,7 @@ namespace RecordsManagement {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(54, 606);
+			this->label5->Location = System::Drawing::Point(54, 499);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(294, 42);
 			this->label5->TabIndex = 44;
@@ -158,22 +152,11 @@ namespace RecordsManagement {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(54, 485);
+			this->label4->Location = System::Drawing::Point(54, 378);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(120, 42);
 			this->label4->TabIndex = 43;
 			this->label4->Text = L"Email:";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(54, 373);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(234, 42);
-			this->label3->TabIndex = 42;
-			this->label3->Text = L"Date of Birth:";
 			// 
 			// label2
 			// 
@@ -199,24 +182,31 @@ namespace RecordsManagement {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->Enabled = false;
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(426, 723);
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Computer Science and Information Systems", L"Business Administration",
+					L"Engineering"
+			});
+			this->comboBox1->Location = System::Drawing::Point(426, 616);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(698, 50);
 			this->comboBox1->TabIndex = 53;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &FacultyProfile::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(527, 926);
+			this->button1->Location = System::Drawing::Point(521, 790);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(253, 78);
+			this->button1->Size = System::Drawing::Size(377, 78);
 			this->button1->TabIndex = 54;
-			this->button1->Text = L"Edit";
+			this->button1->Text = L"Update Password";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &FacultyProfile::button1_Click);
 			// 
 			// FacultyProfile
 			// 
@@ -226,14 +216,12 @@ namespace RecordsManagement {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textEmail);
 			this->Controls->Add(this->dtpHireDate);
-			this->Controls->Add(this->dtpDOB);
 			this->Controls->Add(this->txtLName);
 			this->Controls->Add(this->txtFName);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
@@ -247,5 +235,34 @@ namespace RecordsManagement {
 
 		}
 #pragma endregion
-	};
+		private: void FillFields(void) {
+			String^ facultyId = "1";
+			// get the semester
+			db^ con = gcnew db();
+			con->openConnection();
+
+			String^ query = "SELECT users.first_name, users.last_name, users.email, faculty.date_of_appointment, faculty.department FROM users JOIN faculty ON users.user_id = faculty.user_id WHERE faculty.faculty_id = "+ facultyId +";";
+			DataTable^ dt = con->fillDataTable(query);
+			txtFName->Text = dt->Rows[0]->ItemArray[0]->ToString();
+			txtLName->Text = dt->Rows[0]->ItemArray[1]->ToString();
+			textEmail->Text = dt->Rows[0]->ItemArray[2]->ToString();
+			dtpHireDate->Value = Convert::ToDateTime(dt->Rows[0]->ItemArray[3]);
+			int index = comboBox1->Items->IndexOf(dt->Rows[0]->ItemArray[4]); // Find the index of the matching value
+
+			if (index != -1) // If the value is found
+			{
+				comboBox1->SelectedIndex = index; // Select the matching value
+			}
+			else
+			{
+				MessageBox::Show("Value not found in ComboBox", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+			/*comboBox1->Value = dt->Rows[0]->ItemArray[4]->ToString();*/
+			con->closeConnection();
+		}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

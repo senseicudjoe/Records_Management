@@ -44,6 +44,7 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::ToolStripMenuItem^ classRosterToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ gradesToolStripMenuItem;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+
 	private: System::ComponentModel::IContainer^ components;
 
 	private:
@@ -140,7 +141,7 @@ namespace RecordsManagement {
 #pragma endregion
 	private: System::Void profileToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		FacultyProfile^ profile = gcnew FacultyProfile();
-		profile->Size = System::Drawing::Size(1000, 500);
+		profile->Size = System::Drawing::Size(700, 650);
 		profile->ShowDialog();
 	}
 private: System::Void FacultyIndexForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
