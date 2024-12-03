@@ -151,7 +151,6 @@ namespace RecordsManagement {
 
 			String^ query = "SELECT DISTINCT c.course_name FROM FacultyCourses fc JOIN Courses c ON fc.course_id = c.course_id WHERE fc.faculty_id =" + facultyId;
 			DataTable^ dt = con->fillDataTable(query);
-			MessageBox::Show(dt->Rows[0]->ItemArray[0]->ToString());
 			for (int i = 0; i < dt->Rows->Count; i++) {
 				String^ course = dt->Rows[i]->ItemArray[0]->ToString();
 				comboBox1->Items->Add(course);

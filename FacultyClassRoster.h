@@ -119,7 +119,6 @@ namespace RecordsManagement {
 
 		String^ query = "SELECT DISTINCT c.course_name FROM FacultyCourses fc JOIN Courses c ON fc.course_id = c.course_id WHERE fc.faculty_id =" + facultyId;
 		DataTable^ dt = con->fillDataTable(query);
-		MessageBox::Show(dt->Rows[0]->ItemArray[0]->ToString());
 		for (int i = 0; i < dt->Rows->Count; i++) {
 			String^ course = dt->Rows[i]->ItemArray[0]->ToString();
 			courses ->Items->Add(course);
@@ -135,7 +134,6 @@ namespace RecordsManagement {
 		db^ con = gcnew db();
 		con->openConnection();
 		String^ query = "SELECT s.student_id,CONCAT(u.first_name, ' ', u.last_name) AS student_name,s.major,s.enrollment_date,c.course_name,fc.semester FROM Faculty f JOIN FacultyCourses fc ON f.faculty_id = fc.faculty_id JOIN Courses c ON fc.course_id = c.course_id JOIN Enrollment e ON c.course_id = e.course_id AND fc.semester = e.semester JOIN Students s ON e.student_id = s.student_id JOIN Users u ON s.user_id = u.user_id WHERE f.faculty_id = " + facultyId + " AND c.course_name = '" + courseName + "' AND e.status = 'enrolled';";
-		MessageBox::Show(query);
 		DataTable^ dt = con->fillDataTable(query);
 		con->closeConnection();
 		if (dt != nullptr) {

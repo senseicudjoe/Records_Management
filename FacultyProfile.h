@@ -54,7 +54,7 @@ namespace RecordsManagement {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Button^ button1;
+
 
 	private:
 		/// <summary>
@@ -79,7 +79,6 @@ namespace RecordsManagement {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label6
@@ -197,24 +196,11 @@ namespace RecordsManagement {
 			this->comboBox1->TabIndex = 53;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &FacultyProfile::comboBox1_SelectedIndexChanged);
 			// 
-			// button1
-			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.875F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(521, 790);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(377, 78);
-			this->button1->TabIndex = 54;
-			this->button1->Text = L"Update Password";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &FacultyProfile::button1_Click);
-			// 
 			// FacultyProfile
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1486, 1075);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textEmail);
